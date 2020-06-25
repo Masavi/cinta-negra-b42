@@ -29,10 +29,9 @@ app.get('/api/', (request, response) => {
 */
 
 app.get('/api/suma', (req, res) => {
-  const num1 = parseInt(req.query.num1);
-  const num2 = parseInt(req.query.num2);
-  const resultado = num1 + num2;
-  res.status(200).json({ resultado: resultado });
+  const { num1, num2 } = req.query;
+  const resultado = parseInt(num1) + parseInt(num2);
+  res.status(200).json({ resultado });
 });
 
 /*
