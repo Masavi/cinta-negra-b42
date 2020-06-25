@@ -45,7 +45,8 @@ app.get('/api/suma', (req, res) => {
 app.get('/api/usuario/:usuario', (req, res) => {
   console.log(req.params);
   console.log(req.query);
-  res.status(200).json({ usuario: req.params.usuario });
+  const { usuario } = req.params;
+  res.status(200).json({ usuario });
 });
 
 /*
