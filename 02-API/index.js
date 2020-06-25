@@ -26,6 +26,16 @@ app.get('/api/', (request, response) => {
       como el siguiente:
                       {‘resultado’: 7}
 
+*/
+
+app.get('/api/suma', (req, res) => {
+  const num1 = parseInt(req.query.num1);
+  const num2 = parseInt(req.query.num2);
+  const resultado = num1 + num2;
+  res.status(200).json({ resultado: resultado });
+});
+
+/*
   3.- Agrega un endpoint ‘/api/usuario/’ que responda a
       una petición de tipo GET con el nombre que sea 
       recibido a través de params. El servidor debe responder
