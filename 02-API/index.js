@@ -40,6 +40,15 @@ app.get('/api/suma', (req, res) => {
       recibido a través de params. El servidor debe responder
       con un código de estado 200 y un json como este:
                     {‘usuario’: ‘Edwin’}
+*/ 
+
+app.get('/api/usuario/:usuario', (req, res) => {
+  console.log(req.params);
+  console.log(req.query);
+  res.status(200).json({ usuario: req.params.usuario });
+});
+
+/*
   4.- Agrega un endpoint ‘/api/swapi’ que responda a una
       petición de tipo GET con el personaje solicitado de 
                       https://swapi.co/
