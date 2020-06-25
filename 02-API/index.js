@@ -1,4 +1,5 @@
 // Configuración
+const request = require('request');
 const express = require('express');
 const app = express();
 const PORT = 3000;
@@ -60,6 +61,17 @@ app.get('/api/usuario/:usuario', (req, res) => {
                       ...,
                   }}
 */
+
+app.get('/api/swapi/:character', (req, res) => {
+  const { character } = req.params;
+  const SWAPI_URL = `https://swapi.dev/api/people/${character}/`;
+  request.get(SWAPI_URL, (err, resSWAPI, body) => {
+    if (resSWAPI.statusCode === 200) {
+      const json = JSON.parse(body);
+      res.status(200).json({ character: json });
+    }
+  });
+});
 
 // Encender la API
 app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
