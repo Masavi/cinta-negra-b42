@@ -10,6 +10,31 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   .then(() => console.log('Database connected!'))
   .catch(() => console.log('Error connecting to database...'));
 
+/*
+  Ejercicio de diseño de base de datos (por votacion): 
+  Un aeropuerto busca controlar los vuelos que llegan al lugar, desea conocer los vuelos que existen, a qué aerolínea pertenecen, las características del avión y el lugar de procedencia. Ayuda al aeropuerto a solucionar su problema.
+*/
+
+// Generar un esquema -> Definicion de las reglas de una coleccion
+const flightsSchema = new mongoose.Schema({
+  airline: {
+    type: String,
+    required: true,
+  },
+  aircraft_name: {
+    type: String,
+    required: true,
+  },
+  aircraft_model: Number,
+  flight_from: {
+    type: String,
+    required: true,
+  },
+});
+
+// Generar un modelo a partir del esquema -> Objeto que nos permite interactuar con la colección
+const Flights = mongoose.model('Flights', flightsSchema);
+
 // Endpoints
 api.get('/', (req, res) => res.status(200).json({ message: "it's alive!" }));
 
