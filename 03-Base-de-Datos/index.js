@@ -1,11 +1,12 @@
 // Configuración
+require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
 const api = express();
 const PORT = process.env.PORT || 3000;
 
 // Conexion a Base de Datos
-mongoose.connect('mongodb://maui:abc123def@cintanegra-shard-00-00-efwi5.mongodb.net:27017,cintanegra-shard-00-01-efwi5.mongodb.net:27017,cintanegra-shard-00-02-efwi5.mongodb.net:27017/test?ssl=true&replicaSet=CintaNegra-shard-0&authSource=admin&retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Database connected!'))
   .catch(() => console.log('Error connecting to database...'));
 
