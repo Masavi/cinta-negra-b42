@@ -12,18 +12,6 @@ const Products = require('./models/Products');
 api.get('/', (req, res) => res.json({ message: "It's alive!" }));
 
 // CRUD Products
-api.post('/api/products', (req, res) => {
-  const { body } = req;
-  const newProduct = new Products(body);
-  newProduct.save()
-    .then(mongoRes => res.status(201).json(mongoRes))
-    .catch(err => res.status(400).json(err));
-});
-
-api.get('/api/products', (req, res) => {
-  Products.find()
-    .then(mongoRes => res.status(201).json(mongoRes))
-    .catch(err => res.status(400).json(err));
-});
+api.use(require('./routes/ProductRoutes'));
 
 api.listen(PORT, () => console.log(`Listening on ${PORT}`));
