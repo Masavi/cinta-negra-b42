@@ -20,4 +20,10 @@ api.post('/api/products', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
+api.get('/api/products', (req, res) => {
+  Products.find()
+    .then(mongoRes => res.status(201).json(mongoRes))
+    .catch(err => res.status(400).json(err));
+});
+
 api.listen(PORT, () => console.log(`Listening on ${PORT}`));
