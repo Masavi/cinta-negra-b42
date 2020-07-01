@@ -21,10 +21,10 @@ const ticketSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  products: {
-    type: mongoose.Types.ObjectId,
+  products: [{
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Products',
-  },
+  }],
 });
 
 const Tickets = mongoose.model('Tickets', ticketSchema);
