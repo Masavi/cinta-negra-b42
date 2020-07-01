@@ -11,5 +11,7 @@ api.get('/', (req, res) => res.json({ message: "It's alive!" }));
 
 // CRUD Products
 api.use(require('./routes/ProductRoutes'));
+// CRUD Tickets
+api.use(require('./routes/TicketRoutes'));
 
 api.listen(PORT, () => console.log(`Listening on ${PORT}`));
