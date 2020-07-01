@@ -14,7 +14,7 @@ router.post('/api/tickets', (req, res) => {
 
 router.get('/api/tickets', (req, res) => {
   Tickets.find()
-    .populate()
+    .populate('products')
     .then(mongoRes => res.status(201).json(mongoRes))
     .catch(err => res.status(400).json(err));
 });
